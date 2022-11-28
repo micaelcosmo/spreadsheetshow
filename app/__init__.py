@@ -8,7 +8,8 @@ app.config.from_object('config')
 db = SQLAlchemy(app)
 ma = Marshmallow(app)
 
-from .routes import routes
+# from .models import users
+# from .routes import routes
 
 
 if __name__ == '__main__':
