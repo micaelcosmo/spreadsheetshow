@@ -1,12 +1,11 @@
 from app import app
+from app.views import users
 from flask import jsonify
 
 
 @app.route('/', methods=['GET'])
 def root():
     return jsonify({'message': 'Hello World!'})
-<<<<<<< Updated upstream:routes/routes.py
-=======
 
 
 @app.route('/users', methods=['POST'])
@@ -32,4 +31,3 @@ def get_user(id):
 @app.route('/users/<id>', methods=['DELETE'])
 def delete_user(id):
     return users.delete_user(id)
->>>>>>> Stashed changes:app/routes/routes.py

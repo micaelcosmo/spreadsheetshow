@@ -4,6 +4,7 @@ from flask import request, jsonify
 from ..models.users import Users, user_schema, users_schema
 
 
+
 def post_user():
     username = request.json['username']
     password = request.json['password']
