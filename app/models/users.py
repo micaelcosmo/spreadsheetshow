@@ -4,7 +4,7 @@ from app import db, ma
 
 # Definição da classe/tabela  dos usuários e seus campos.
 class Users(db.Model):
-    id = db.Column(db.Integer, primary_key=True, autoincrement=False)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     username = db.Column(db.String(20), unique=True, nullable=False)
     password = db.Column(db.String(200), nullable=False)
     name = db.Column(db.String(60), nullable=False)
