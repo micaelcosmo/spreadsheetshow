@@ -4,7 +4,6 @@ from flask import request, jsonify
 from ..models.users import Users, user_schema, users_schema
 
 
-
 def post_user():
     username = request.json['username']
     password = request.json['password']
@@ -76,3 +75,10 @@ def delete_user(id):
             return jsonify({'message': 'successfully deleted', 'data': result}), 200
         except:
             return jsonify({'message': 'unable to delete', 'data': {}}), 500
+
+
+def user_by_username(username):
+    try:
+        return Users.query.filter(Users.username == username).one()
+    except:
+        return None
