@@ -17,5 +17,6 @@ def post_user():
         db.session.commit()
         result = user_schema.dump(user)
         return jsonify({'message': 'successfully registred', 'data': result}), 201
+
     except:
         return jsonify({'message': 'unable to create', 'data': {}}), 500
