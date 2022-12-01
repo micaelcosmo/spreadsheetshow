@@ -10,17 +10,17 @@ from datetime import datetime, timedelta
 def token_required(f):
     @wraps(f)
     def decorated(*args, **kwargs):
-        token = request.args.get('token')
-        if not token:
-            return jsonify({'message': 'token is missing.', 'data': {}}), 401
-        try:
-            data = jwt.decode(token, app.config['SECRET_KEY'])
-            current_user = user_by_username(username=data['username'])
-        except:
-            return jsonify({'messsage': 'token is invalid or expired.', 'data': {}}), 401
-        return f(current_user, *args, **kwargs)
-    return decorated()
-
+        with app.test_request_context():
+            token = request.args.get('token')
+            if not token:
+                return jsonify({'message': 'token is missing.', 'data': {}}), 401
+            try:
+                data = jwt.decode(token, app.config['SECRET_KEY'])
+                current_user = user_by_username(username=data['username'])
+            except:
+                return jsonify({'messsage': 'token is invalid or expired.', 'data': {}}), 401
+            return f(current_user, *args, **kwargs)
+    return decorated
 
 
 def auth():
