@@ -59,7 +59,7 @@ def get_user(id):
     if user:
         result = user_schema.dump(user)
         return jsonify({'message': 'successfully fetched', 'data': result}), 201
-    return jsonify({'message': 'nothing foud', 'data': {}})
+    return jsonify({'message': 'nothing found', 'data': {}})
 
 
 def delete_user(id):
